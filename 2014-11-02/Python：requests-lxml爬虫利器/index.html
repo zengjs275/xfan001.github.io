@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Python：requests+lxml爬虫利器 | xfan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Requestsrequests是一个强大的Python第三方Http库，基于httplib和urllib3，接口清晰易用，功能十分强大。
+###1. 安装    pip install requests或者easy_install requests
+###2. 基本使用在ipython中利用自动补全看下调用requests之后返回的response对象的一些属性:
+In [1]: import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python：requests+lxml爬虫利器">
+<meta property="og:url" content="http://blog.xfan.me/2014-11-02/Python：requests-lxml爬虫利器/index.html">
+<meta property="og:site_name" content="xfan's blog">
+<meta property="og:description" content="Requestsrequests是一个强大的Python第三方Http库，基于httplib和urllib3，接口清晰易用，功能十分强大。
+###1. 安装    pip install requests或者easy_install requests
+###2. 基本使用在ipython中利用自动补全看下调用requests之后返回的response对象的一些属性:
+In [1]: import">
+<meta property="og:updated_time" content="2015-03-23T15:12:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python：requests+lxml爬虫利器">
+<meta name="twitter:description" content="Requestsrequests是一个强大的Python第三方Http库，基于httplib和urllib3，接口清晰易用，功能十分强大。
+###1. 安装    pip install requests或者easy_install requests
+###2. 基本使用在ipython中利用自动补全看下调用requests之后返回的response对象的一些属性:
+In [1]: import">
+  
+    <link rel="alternative" href="/atom.xml" title="xfan&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">xfan&#39;s blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Just Do It!</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://blog.xfan.me"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python：requests-lxml爬虫利器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014-11-02/Python：requests-lxml爬虫利器/" class="article-date">
+  <time datetime="2014-11-02T12:07:03.000Z" itemprop="datePublished">2014-11-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python：requests+lxml爬虫利器
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Requests">Requests</h2><p><a href="http://requests-docs-cn.readthedocs.org/zh_CN/latest/" target="_blank" rel="external">requests</a>是一个强大的Python第三方Http库，基于httplib和urllib3，接口清晰易用，功能十分强大。</p>
+<p>###1. <strong>安装</strong><br>    pip install requests或者easy_install requests</p>
+<p>###2. <strong>基本使用</strong><br>在ipython中利用自动补全看下调用requests之后返回的response对象的一些属性:</p>
+<pre><code>In [<span class="number">1</span>]: import requests
+In [<span class="number">2</span>]: r = requests.<span class="function"><span class="title">get</span><span class="params">(<span class="string">'https://api.github.com'</span>)</span></span>
+In [<span class="number">3</span>]: r.
+r<span class="class">.apparent_encoding</span>  r<span class="class">.history</span>            r<span class="class">.raw</span>
+r<span class="class">.close</span>              r<span class="class">.is_redirect</span>        r<span class="class">.reason</span>
+r<span class="class">.connection</span>         r<span class="class">.iter_content</span>       r<span class="class">.request</span>
+r<span class="class">.content</span>            r<span class="class">.iter_lines</span>         r<span class="class">.status_code</span>
+r<span class="class">.cookies</span>            r<span class="class">.json</span>               r<span class="class">.text</span>
+r<span class="class">.elapsed</span>            r<span class="class">.links</span>              r<span class="class">.url</span>
+r<span class="class">.encoding</span>           r<span class="class">.ok</span>                 
+r<span class="class">.headers</span>            r<span class="class">.raise_for_status</span> 
+</code></pre><p>有以下几点说明一下:</p>
+<ol>
+<li>r.encoding是直接从响应头部信息Content-Type里获取页面编码, 而r.apparent_encoding是利用chardet检测r.content的编码得到的值.</li>
+<li>r.content是响应内容的字节流(bytes)，而r.text是将响应内容以r.encoding解码后得到的unicode对象.</li>
+<li>r.raw可获得原始套接字响应，但必须在发出请求时设置stream=True，之后可使用read()方法读取.</li>
+<li>requests的get()和post()请求可以接受params={}, data={}, headers={}， cookies={}， proxies={}, auth=(),等等一系列参数.</li>
+<li>其他一些基本设置可以参考<a href="http://requests-docs-cn.readthedocs.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="external">这儿</a></li>
+</ol>
+<p>###3. <strong>高级功能</strong><br>详细请参照<a href="http://requests-docs-cn.readthedocs.org/zh_CN/latest/user/advanced.html" target="_blank" rel="external">这儿</a>, 包含了会话对象，获取requests对象，代理，SSL等等内容。一些说明如下：</p>
+<ol>
+<li><p>使用goagent代理设置proxies参数如下:</p>
+<p> proxies = {‘http’: ‘<a href="http://127.0.0.1:8087" target="_blank" rel="external">http://127.0.0.1:8087</a>‘, ‘https’: ‘<a href="http://127.0.0.1:8087&#39;}" target="_blank" rel="external">http://127.0.0.1:8087&#39;}</a></p>
+</li>
+<li><p>官网的使用说明很全面， 其他的涉及到了再来补充:)</p>
+</li>
+</ol>
+<h2 id="lxml">lxml</h2><p>使用requests库获取到网页内容后，再通过lxml解析，也可通过<a href="http://www.crummy.com/software/BeautifulSoup/bs3/documentation.zh.html" target="_blank" rel="external">BeautifulSoup</a>等等工具</p>
+<p>lxml是基于C语言库libxml2和libxslt的python化绑定，其对XML（HTMl）有强大的处理能力，并且向下兼容Python的ElementTree API，支持Xpath和BeautifulSoup解析， 使用起来非常方便。官方教程点<a href="http://lxml.de/" target="_blank" rel="external">这里</a>。</p>
+<p>###1. 安装<br>    pip install lxml 或者 easy_install lxml<br>系统必须安装有libxml和libxslt， windows下安装最好指定版本名称，如lxml==2.2.6</p>
+<p>###2. lxml.etree</p>
+<p>官方教程<a href="http://lxml.de/tutorial.html" target="_blank" rel="external">lxml.etre</a></p>
+<p>获取Element对象的几种方式:</p>
+<ol>
+<li>etree.fromstring(), etree.XML(), etree.HTML()从字符串解析xml(html)对象.</li>
+<li>etree.parse()函数从文件解析xml，返回Elementree对象，它可以读取如下几种:<ul>
+<li>文件名</li>
+<li>URL字符串</li>
+<li>以wb模式打开的文件对象或类文件对象</li>
+</ul>
+</li>
+</ol>
+<p>Element和Elementree是Elementree API中主要使用的类，前者只能接受一个标签字符串的值来生成Element对象，而后者可以处理完整的xml文档或字符串。例子如下:</p>
+<pre><code><span class="comment"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding:utf-8</span></span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</span><br><span class="line"></span><br><span class="line">xmlstring = <span class="string">'''</span><br><span class="line">    &lt;bookstore&gt;</span><br><span class="line">    &lt;book category="COOKING"&gt;</span><br><span class="line">      &lt;title lang="en"&gt;Everyday Italian&lt;second&gt;NoName&lt;/second&gt;&lt;/title&gt; </span><br><span class="line">      &lt;author&gt;Giada De Laurentiis&lt;/author&gt; </span><br><span class="line">      &lt;year&gt;2005&lt;/year&gt; </span><br><span class="line">      &lt;price&gt;30.00&lt;/price&gt; </span><br><span class="line">    &lt;/book&gt;</span><br><span class="line">    &lt;book category="CHILDREN"&gt;</span><br><span class="line">      &lt;title lang="en"&gt;Harry Potter&lt;/title&gt; </span><br><span class="line">      &lt;author&gt;J K. Rowling&lt;/author&gt; </span><br><span class="line">      &lt;year&gt;2005&lt;/year&gt; </span><br><span class="line">      &lt;price&gt;29.99&lt;/price&gt; </span><br><span class="line">    &lt;/book&gt;</span><br><span class="line">    &lt;/bookstore&gt;</span><br><span class="line">'''</span></span><br><span class="line"></span><br><span class="line">root = etree.fromstring(xmlstring)</span><br><span class="line"><span class="keyword">print</span> type(root)	<span class="comment">#&lt;type 'lxml.etree._Element'&gt;</span></span><br><span class="line"><span class="keyword">print</span> root.tag  <span class="comment">#bookstore</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#可以像操作列表一样操作root的子元素</span></span><br><span class="line"><span class="keyword">print</span> len(root)	<span class="comment">#2</span></span><br><span class="line"><span class="keyword">print</span> root[<span class="number">1</span>]	<span class="comment">#&lt;Element book at 0x244d3a0&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> root[<span class="number">0</span>].getparent() <span class="keyword">is</span> root 		<span class="comment">#True, lxml only,标准库中无此方法</span></span><br><span class="line"><span class="keyword">print</span> root[<span class="number">0</span>].getnext() <span class="keyword">is</span> root[<span class="number">1</span>]		<span class="comment">#True, lxml only</span></span><br><span class="line"><span class="keyword">print</span> root[<span class="number">1</span>].getprevious() <span class="keyword">is</span> root[<span class="number">0</span>]	<span class="comment">#True, lxml only</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> root:</span><br><span class="line">    <span class="keyword">print</span> child.get(<span class="string">'category'</span>)	<span class="comment">#COOKING，CHILDREN</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#也可以像字典一样操作标签的属性</span></span><br><span class="line">cooking = root[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> cooking.items():</span><br><span class="line">    <span class="keyword">print</span> k, v	<span class="comment">#output:category COOKING</span></span><br><span class="line"></span><br><span class="line">attributes = cooking.attrib</span><br><span class="line"><span class="keyword">print</span> attributes[<span class="string">'category'</span>]	<span class="comment">#output:COOKING,同上</span></span><br><span class="line"></span><br><span class="line">title = cooking[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">print</span> title.text	<span class="comment">#output:Everyday Italian</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> etree.tostring(root, pretty_print=<span class="keyword">True</span>)	<span class="comment">#格式化输出xml字符串</span></span><br><span class="line"><span class="keyword">print</span> etree.tostring(cooking, method=<span class="string">"text"</span>)	<span class="comment">#输入该标签内的所有文字，包括子标签里的文字</span></span><br></pre></td></tr></table></figure></span>
+</code></pre><p>###3. xpath</p>
+<p>lxml还可以通过xpath表达式来获取数据，xpath的介绍语法参考<a href="http://www.w3school.com.cn/xpath/" target="_blank" rel="external">这里</a>，调用时直接使用xpath函数或者构造XPath对象:</p>
+<pre><code><span class="tag">html</span>.<span class="function"><span class="title">xpath</span><span class="params">(<span class="string">'xpath-expression'</span>)</span></span>
+</code></pre><p>###4. etree.html</p>
+<p>该处理html页面,教程参考<a href="http://lxml.de/lxmlhtml.html" target="_blank" rel="external">这儿</a>,几个常用的函数:</p>
+<pre><code><span class="function"><span class="title">fromstring</span><span class="params">(string)</span></span>:生成html对象
+.<span class="function"><span class="title">text_content</span><span class="params">()</span></span>:忽略标签及子标签，获取所有文本内容
+.<span class="function"><span class="title">cssselect</span><span class="params">(expr)</span></span>:CSS选择器，类似xpath选择器
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://blog.xfan.me/2014-11-02/Python：requests-lxml爬虫利器/" data-id="cify3aukx0006ztimcakxl5nj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014-11-16/python网页正文提取库-readability介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          python网页正文提取库-readability介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014-10-31/wechat+django开发示例/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">wechat+django开发示例</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/django/">django</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">November 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2015-03-23/Django用户验证系统demo/">Django用户验证系统demo</a>
+          </li>
+        
+          <li>
+            <a href="/2014-11-16/python网页正文提取库-readability介绍/">python网页正文提取库-readability介绍</a>
+          </li>
+        
+          <li>
+            <a href="/2014-11-02/Python：requests-lxml爬虫利器/">Python：requests+lxml爬虫利器</a>
+          </li>
+        
+          <li>
+            <a href="/2014-10-31/wechat+django开发示例/">wechat+django开发示例</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 lifan<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
